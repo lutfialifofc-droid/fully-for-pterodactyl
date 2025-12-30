@@ -83,14 +83,30 @@ curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
 print_info "Installing MariaDB..."
 apt install -y mariadb-server mariadb-client
 
+# Start MariaDB service
+systemctl start mariadb
+systemctl enable mariadb
+
 # Secure MariaDB installation
 print_info "Configuring MariaDB..."
-mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';"
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.user WHERE User='';"
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');"
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DROP DATABASE IF EXISTS test;"
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';"
-mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;"
+
+# First, try to set root password (works on fresh install)
+mysql -e "ALTER USER 'root'@'localhost' IDENTIFIED BY '${MYSQL_ROOT_PASSWORD}';" 2>/dev/null || \
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "SELECT 1;" 2>/dev/null || {
+    print_warning "Setting root password using alternative method..."
+    mysql -e "SET PASSWORD FOR 'root'@'localhost' = PASSWORD('${MYSQL_ROOT_PASSWORD}');" 2>/dev/null || \
+    mysql -e "UPDATE mysql.user SET Password=PASSWORD('${MYSQL_ROOT_PASSWORD}') WHERE User='root'; FLUSH PRIVILEGES;" 2>/dev/null
+}
+
+# Wait a moment for password to take effect
+sleep 2
+
+# Secure the installation
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.user WHERE User='';" 2>/dev/null || true
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');" 2>/dev/null || true
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DROP DATABASE IF EXISTS test;" 2>/dev/null || true
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "DELETE FROM mysql.db WHERE Db='test' OR Db='test\\_%';" 2>/dev/null || true
+mysql -u root -p"${MYSQL_ROOT_PASSWORD}" -e "FLUSH PRIVILEGES;" 2>/dev/null || true
 
 # Create Pterodactyl database
 print_info "Creating Pterodactyl database..."
@@ -100,6 +116,8 @@ CREATE USER IF NOT EXISTS 'pterodactyl'@'127.0.0.1' IDENTIFIED BY '${MYSQL_PANEL
 GRANT ALL PRIVILEGES ON panel.* TO 'pterodactyl'@'127.0.0.1' WITH GRANT OPTION;
 FLUSH PRIVILEGES;
 EOF
+
+print_success "Database configured successfully"
 
 # Install Redis
 print_info "Installing Redis..."
@@ -131,9 +149,8 @@ COMPOSER_ALLOW_SUPERUSER=1 composer install --no-dev --optimize-autoloader
 # Setup environment
 print_info "Configuring Pterodactyl environment..."
 cp .env.example .env
-php artisan key:generate --force
 
-# Configure environment file
+# Configure environment file first
 cat > .env <<EOF
 APP_NAME=Pterodactyl
 APP_ENV=production
@@ -166,7 +183,17 @@ MAIL_FROM_ADDRESS=
 MAIL_FROM_NAME=Pterodactyl
 EOF
 
+# Generate application key
+print_info "Generating application key..."
 php artisan key:generate --force
+
+# Verify key was generated
+if grep -q "APP_KEY=base64:" .env; then
+    print_success "Application key generated successfully"
+else
+    print_error "Failed to generate application key"
+    exit 1
+fi
 
 # Setup database
 print_info "Setting up database..."

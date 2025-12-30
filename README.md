@@ -3,21 +3,25 @@
 
 Script lengkap untuk instalasi dan optimasi Pterodactyl Panel dengan performa maksimal.
 
+**🆕 UPDATE: Script telah diperbaiki untuk mengatasi masalah Application Key dan MySQL Access Denied!**
+
 ---
 
-## 📋 Fitur
+## 📦 Daftar Script
 
-### Auto Installer (`pterodactyl-installer.sh`)
+### 1. **pterodactyl-installer.sh** - Auto Installer ⭐ UPDATED
 - ✅ Instalasi otomatis Pterodactyl Panel versi terbaru
 - ✅ Konfigurasi PHP 8.2 dengan ekstensi lengkap
-- ✅ Setup MariaDB dengan keamanan optimal
+- ✅ Setup MariaDB dengan keamanan optimal (FIXED: MySQL Access Denied)
 - ✅ Konfigurasi Redis untuk caching
 - ✅ Setup Nginx dengan SSL (Let's Encrypt)
 - ✅ Konfigurasi Queue Worker otomatis
 - ✅ Firewall configuration (UFW)
 - ✅ Cron jobs untuk scheduled tasks
+- ✅ **FIXED: Application Key generation & verification**
+- ✅ **FIXED: Multiple fallback methods untuk MySQL password**
 
-### Optimizer (`pterodactyl-optimizer.sh`)
+### 2. **pterodactyl-optimizer.sh** - Optimizer
 - ✅ Optimasi PHP-FPM berdasarkan RAM sistem
 - ✅ Optimasi Nginx dengan worker processes dinamis
 - ✅ Tuning MariaDB/MySQL untuk performa maksimal
@@ -28,9 +32,48 @@ Script lengkap untuk instalasi dan optimasi Pterodactyl Panel dengan performa ma
 - ✅ Monitoring script
 - ✅ Automatic backup sebelum optimasi
 
+### 3. **quick-start.sh** - Menu Interaktif 🎯
+Menu user-friendly untuk semua operasi:
+- 🚀 Install Pterodactyl Panel
+- ⚡ Optimize Existing Panel
+- 📊 Check Panel Status & Monitoring
+- 🔄 Update Pterodactyl Panel
+- 💾 Backup Panel & Database
+- 🔧 Troubleshooting & Repair
+- 📖 View Documentation
+
+### 4. **fix-common-issues.sh** - Fix Script 🆕 NEW!
+Script khusus untuk memperbaiki masalah umum:
+- [1] Fix Application Key (APP_KEY empty/not set)
+- [2] Fix MySQL Access Denied (ERROR 1045)
+- [3] Fix Database Connection Issues
+- [4] Fix All Permissions
+- [5] Complete System Check & Fix
+
+### 5. **CARA-INSTALASI.md** - Panduan Instalasi 📖
+Panduan lengkap step-by-step:
+- Metode instalasi otomatis (recommended)
+- Metode instalasi manual
+- Verifikasi instalasi
+- Troubleshooting
+- Langkah selanjutnya
+
+### 6. **TROUBLESHOOTING.md** - Panduan Troubleshooting 🔧 NEW!
+Solusi lengkap untuk masalah umum:
+- ❌ Application Key errors
+- ❌ MySQL Access Denied (ERROR 1045)
+- ❌ Database Connection Failed
+- ❌ Composer Install Failed
+- ❌ Permission Denied
+- ❌ 502 Bad Gateway
+- ❌ SSL Certificate Failed
+- ❌ Queue Worker issues
+- ❌ Migration Failed
+- 🔍 Diagnostic commands
+
 ---
 
-## 🚀 Instalasi Baru
+## 🚀 Quick Start
 
 ### Persyaratan Sistem
 - Ubuntu 24.04 LTS (fresh install recommended)
@@ -39,37 +82,56 @@ Script lengkap untuk instalasi dan optimasi Pterodactyl Panel dengan performa ma
 - Domain yang sudah pointing ke server
 - Akses root/sudo
 
-### Langkah Instalasi
+### Instalasi Tercepat (Menggunakan Menu Interaktif)
 
-1. **Download script installer:**
+1. **Upload semua script ke server:**
 ```bash
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh // SC UTAMA INSTALLER
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh // SC UTAMA OPTIMIZER
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh // GUNAKAN INI UNTUK MEMPERMUDAH
-```
-```berikan akses
-chmod +x pterodactyl-installer.sh
-chmod +x pterodactyl-optimizer.sh
-chmod +x quick-start.sh
+scp pterodactyl-installer.sh root@your-server-ip:/root/
+scp pterodactyl-optimizer.sh root@your-server-ip:/root/
+scp quick-start.sh root@your-server-ip:/root/
+scp fix-common-issues.sh root@your-server-ip:/root/
 ```
 
-2. **Jalankan installer:**
+2. **Login ke server:**
 ```bash
-sudo bash pterodactyl-installer.sh
+ssh root@your-server-ip
 ```
 
-3. **Ikuti prompt yang muncul:**
+3. **Berikan permission:**
+```bash
+cd /root
+chmod +x *.sh
+```
+
+4. **Jalankan menu interaktif:**
+```bash
+sudo bash quick-start.sh
+```
+
+5. **Pilih opsi [1] Install Pterodactyl Panel**
+
+6. **Ikuti prompt yang muncul:**
    - Masukkan domain (contoh: panel.example.com)
    - Masukkan email untuk Let's Encrypt
    - Buat password MySQL root
    - Buat password database Pterodactyl
    - Pilih timezone (contoh: Asia/Jakarta)
 
-4. **Tunggu proses instalasi selesai** (±10-15 menit)
+7. **Tunggu proses instalasi selesai** (±10-15 menit)
 
-5. **Akses panel Anda:**
+8. **Akses panel Anda:**
    - URL: https://your-domain.com
    - Setup admin user sesuai instruksi
+
+### Instalasi Manual (Tanpa Menu)
+
+```bash
+# Download dan jalankan installer langsung
+chmod +x pterodactyl-installer.sh
+sudo bash pterodactyl-installer.sh
+```
+
+**📖 Untuk panduan lengkap, baca [CARA-INSTALASI.md](CARA-INSTALASI.md)**
 
 ---
 
@@ -82,7 +144,6 @@ Jika Anda sudah memiliki Pterodactyl Panel yang terinstall:
 1. **Download script optimizer:**
 ```bash
 cd /root
-wget https://raw.githubusercontent.com/yourusername/pterodactyl-scripts/main/pterodactyl-optimizer.sh
 chmod +x pterodactyl-optimizer.sh
 ```
 
@@ -156,6 +217,72 @@ sudo tail -f /var/log/php8.2-fpm-slow.log
 # Queue worker log
 sudo journalctl -u pteroq -f
 ```
+
+---
+
+## 🔧 Troubleshooting & Fix
+
+### Mengalami Error Saat Instalasi?
+
+**Gunakan Fix Script:**
+```bash
+sudo bash fix-common-issues.sh
+```
+
+### Masalah Umum & Solusi Cepat:
+
+#### ❌ ERROR: Application Key Not Set
+```bash
+sudo bash fix-common-issues.sh
+# Pilih [1] Fix Application Key
+```
+
+#### ❌ ERROR 1045: MySQL Access Denied
+```bash
+sudo bash fix-common-issues.sh
+# Pilih [2] Fix MySQL Access Denied
+```
+
+#### ❌ Database Connection Failed
+```bash
+sudo bash fix-common-issues.sh
+# Pilih [3] Fix Database Connection
+```
+
+#### ❌ Permission Errors
+```bash
+sudo bash fix-common-issues.sh
+# Pilih [4] Fix All Permissions
+```
+
+#### 🔍 Complete System Check
+```bash
+sudo bash fix-common-issues.sh
+# Pilih [5] Complete System Check & Fix
+```
+
+### Troubleshooting Manual
+
+**Panel tidak bisa diakses:**
+```bash
+sudo systemctl status nginx php8.2-fpm
+sudo tail -f /var/log/nginx/pterodactyl.app-error.log
+```
+
+**Queue Worker tidak berjalan:**
+```bash
+sudo systemctl status pteroq
+sudo systemctl restart pteroq
+sudo journalctl -u pteroq -n 50
+```
+
+**Database connection error:**
+```bash
+mysql -u pterodactyl -p panel
+sudo systemctl status mariadb
+```
+
+**📖 Untuk panduan lengkap troubleshooting, baca [TROUBLESHOOTING.md](TROUBLESHOOTING.md)**
 
 ---
 
@@ -286,73 +413,6 @@ nano /var/www/pterodactyl/.env
 
 ---
 
-## 🐛 Troubleshooting
-
-### Panel tidak bisa diakses
-
-1. **Check Nginx:**
-```bash
-sudo nginx -t
-sudo systemctl status nginx
-```
-
-2. **Check PHP-FPM:**
-```bash
-sudo systemctl status php8.2-fpm
-```
-
-3. **Check logs:**
-```bash
-sudo tail -f /var/log/nginx/pterodactyl.app-error.log
-```
-
-### Queue Worker tidak berjalan
-
-```bash
-sudo systemctl status pteroq
-sudo systemctl restart pteroq
-sudo journalctl -u pteroq -n 50
-```
-
-### Database connection error
-
-```bash
-# Test connection
-mysql -u pterodactyl -p panel
-
-# Check MariaDB status
-sudo systemctl status mariadb
-
-# Restart MariaDB
-sudo systemctl restart mariadb
-```
-
-### High CPU/RAM usage
-
-```bash
-# Check processes
-top
-htop
-
-# Check PHP-FPM pool
-sudo systemctl status php8.2-fpm
-
-# Adjust PHP-FPM settings
-sudo nano /etc/php/8.2/fpm/pool.d/www.conf
-# Kurangi pm.max_children jika perlu
-sudo systemctl restart php8.2-fpm
-```
-
-### Permission errors
-
-```bash
-cd /var/www/pterodactyl
-sudo chown -R www-data:www-data *
-sudo chmod -R 755 storage bootstrap/cache
-```
-
----
-
 ## 📈 Performance Tips
 
 1. **Enable OPcache** (sudah enabled by optimizer)
@@ -444,17 +504,19 @@ sudo systemctl start nginx php8.2-fpm pteroq
 
 ---
 
-## 📞 Support & Kontribusi
+## 🆕 What's New
 
-### Melaporkan Issues
-Jika menemukan bug atau masalah, silakan buat issue di GitHub repository.
-
-### Kontribusi
-Pull requests are welcome! Untuk perubahan besar, silakan buka issue terlebih dahulu.
-
----
-
-## 📝 Changelog
+### Version 1.1.0 (Latest) - Bug Fixes & Improvements
+- 🔧 **FIXED**: Application Key generation & verification
+- 🔧 **FIXED**: MySQL Access Denied (ERROR 1045) dengan multiple fallback methods
+- 🔧 **FIXED**: MariaDB service start sebelum konfigurasi
+- ✨ **NEW**: fix-common-issues.sh - Script untuk fix masalah umum
+- ✨ **NEW**: TROUBLESHOOTING.md - Panduan troubleshooting lengkap
+- ✨ **NEW**: CARA-INSTALASI.md - Panduan instalasi step-by-step
+- ✨ **NEW**: quick-start.sh - Menu interaktif user-friendly
+- ⚡ **IMPROVED**: Error handling yang lebih baik
+- ⚡ **IMPROVED**: Verifikasi setiap step instalasi
+- ⚡ **IMPROVED**: Dokumentasi yang lebih lengkap
 
 ### Version 1.0.0 (2024)
 - Initial release
@@ -465,16 +527,137 @@ Pull requests are welcome! Untuk perubahan besar, silakan buka issue terlebih da
 
 ---
 
-## ⚖️ License
+## 📚 Dokumentasi Lengkap
 
-MIT License - Bebas digunakan untuk keperluan pribadi maupun komersial.
+- **[CARA-INSTALASI.md](CARA-INSTALASI.md)** - Panduan instalasi step-by-step lengkap
+- **[TROUBLESHOOTING.md](TROUBLESHOOTING.md)** - Solusi untuk semua masalah umum
+- **[README.md](README.md)** - Dokumentasi utama (file ini)
 
 ---
 
-## 🙏 Credits
+## 💡 Tips & Best Practices
 
-- Pterodactyl Panel: https://pterodactyl.io
-- Dibuat dengan ❤️ untuk komunitas Pterodactyl Indonesia
+1. **Selalu backup sebelum update atau perubahan besar**
+2. **Gunakan domain yang valid** - Jangan gunakan IP address
+3. **Setup email dengan benar** - Penting untuk notifikasi
+4. **Monitor resource usage** - Gunakan pterodactyl-monitor.sh
+5. **Update secara berkala** - Gunakan menu update di quick-start.sh
+6. **Gunakan password yang kuat** - Untuk database dan admin user
+7. **Enable 2FA** - Untuk keamanan tambahan
+8. **Jalankan optimizer setelah instalasi** - Untuk performa optimal
+
+---
+
+## ❓ FAQ
+
+### Q: Bagaimana cara menggunakan script ini?
+**A:** Upload semua script ke server, berikan permission dengan `chmod +x *.sh`, lalu jalankan `sudo bash quick-start.sh`
+
+### Q: Apakah script ini gratis?
+**A:** Ya, 100% gratis dan open source (MIT License)
+
+### Q: Apakah bisa digunakan untuk production?
+**A:** Ya, script ini dirancang untuk production environment dengan best practices
+
+### Q: Bagaimana jika instalasi gagal?
+**A:** Gunakan `fix-common-issues.sh` atau baca `TROUBLESHOOTING.md` untuk solusi
+
+### Q: Apakah support Ubuntu versi lain?
+**A:** Script ini dioptimalkan untuk Ubuntu 24.04 LTS, tapi mungkin bisa berjalan di versi lain dengan modifikasi
+
+### Q: Bagaimana cara update panel?
+**A:** Jalankan `sudo bash quick-start.sh` dan pilih opsi [4] Update Pterodactyl Panel
+
+### Q: Apakah ada support untuk Wings (Daemon)?
+**A:** Script ini hanya untuk Panel. Untuk Wings, ikuti dokumentasi resmi Pterodactyl
+
+---
+
+## 🤝 Kontribusi
+
+Kontribusi sangat diterima! Jika Anda ingin berkontribusi:
+
+1. Fork repository ini
+2. Buat branch baru (`git checkout -b feature/AmazingFeature`)
+3. Commit perubahan (`git commit -m 'Add some AmazingFeature'`)
+4. Push ke branch (`git push origin feature/AmazingFeature`)
+5. Buat Pull Request
+
+---
+
+## 📞 Support
+
+Jika mengalami masalah:
+
+1. **Baca dokumentasi:**
+   - [CARA-INSTALASI.md](CARA-INSTALASI.md)
+   - [TROUBLESHOOTING.md](TROUBLESHOOTING.md)
+
+2. **Gunakan fix script:**
+   ```bash
+   sudo bash fix-common-issues.sh
+   ```
+
+3. **Check logs:**
+   ```bash
+   sudo tail -f /var/log/nginx/pterodactyl.app-error.log
+   ```
+
+4. **Join komunitas:**
+   - Discord Pterodactyl: https://discord.gg/pterodactyl
+   - Dokumentasi Resmi: https://pterodactyl.io
+
+---
+
+## ⚠️ Disclaimer
+
+Script ini disediakan "as is" tanpa warranty. Selalu backup data Anda sebelum menjalankan script. Penulis tidak bertanggung jawab atas kerusakan atau kehilangan data yang mungkin terjadi.
+
+---
+
+## 📄 License
+
+MIT License
+
+Copyright (c) 2024
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+## 🙏 Credits & Acknowledgments
+
+- **Pterodactyl Panel**: https://pterodactyl.io - Amazing game server management panel
+- **Ubuntu**: https://ubuntu.com - Reliable Linux distribution
+- **Nginx**: https://nginx.org - High-performance web server
+- **PHP**: https://php.net - Server-side scripting language
+- **MariaDB**: https://mariadb.org - Robust database server
+- **Redis**: https://redis.io - In-memory data structure store
+- **Let's Encrypt**: https://letsencrypt.org - Free SSL certificates
+
+Dibuat dengan ❤️ untuk komunitas Pterodactyl Indonesia
+
+---
+
+## 🌟 Star History
+
+Jika script ini membantu Anda, berikan ⭐ di GitHub!
 
 ---
 
@@ -487,8 +670,6 @@ MIT License - Bebas digunakan untuk keperluan pribadi maupun komersial.
 
 ---
 
-**Selamat menggunakan! Jika ada pertanyaan, jangan ragu untuk bertanya.** 🚀
+**Selamat menggunakan! Semoga server Pterodactyl Anda berjalan lancar! 🚀**
 
-
-
-
+**Butuh bantuan? Baca [TROUBLESHOOTING.md](TROUBLESHOOTING.md) atau jalankan `sudo bash fix-common-issues.sh`**
