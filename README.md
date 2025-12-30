@@ -146,6 +146,55 @@ Solusi lengkap untuk masalah umum Panel & Wings:
 
 ### Instalasi Tercepat (All-in-One)
 
+#### **Metode 1: Download dari GitHub (RECOMMENDED)**
+
+```bash
+# Login ke server
+ssh root@your-server-ip
+
+# Masuk ke direktori root
+cd /root
+
+# Download semua script dari GitHub
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-installer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-optimizer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/wings-installer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/fix-common-issues.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start-v2.sh
+
+# Download dokumentasi (optional)
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/README.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/CARA-INSTALASI.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/WINGS-INSTALLATION.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/TROUBLESHOOTING.md
+
+# Berikan permission
+chmod +x *.sh
+
+# Jalankan menu V2 (Panel + Wings)
+sudo bash quick-start-v2.sh
+```
+
+**Catatan:** Ganti `YOUR_USERNAME` dan `YOUR_REPO` dengan username dan repository GitHub Anda.
+
+#### **Metode 2: Download Semua Sekaligus (One-Liner)**
+
+```bash
+# Download dan setup otomatis
+cd /root && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-installer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-optimizer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/wings-installer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/fix-common-issues.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start-v2.sh && \
+chmod +x *.sh && \
+echo "✓ Download selesai! Jalankan: sudo bash quick-start-v2.sh"
+```
+
+#### **Metode 3: Upload Manual (SCP)**
+
 ```bash
 # Upload semua script ke server
 scp *.sh *.md root@your-server-ip:/root/
@@ -158,6 +207,24 @@ cd /root
 chmod +x *.sh
 
 # Jalankan menu V2 (Panel + Wings)
+sudo bash quick-start-v2.sh
+```
+
+#### **Metode 4: Clone Repository**
+
+```bash
+# Login ke server
+ssh root@your-server-ip
+
+# Clone repository
+cd /root
+git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+cd YOUR_REPO
+
+# Berikan permission
+chmod +x *.sh
+
+# Jalankan menu V2
 sudo bash quick-start-v2.sh
 ```
 
