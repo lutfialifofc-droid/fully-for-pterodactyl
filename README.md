@@ -43,10 +43,14 @@ Script lengkap untuk instalasi dan optimasi Pterodactyl Panel dengan performa ma
 
 1. **Download script installer:**
 ```bash
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh
+wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh // SC UTAMA INSTALLER
+wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh // SC UTAMA OPTIMIZER
+wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh // GUNAKAN INI UNTUK MEMPERMUDAH
+```
+```berikan akses
 chmod +x pterodactyl-installer.sh
+chmod +x pterodactyl-optimizer.sh
+chmod +x quick-start.sh
 ```
 
 2. **Jalankan installer:**
@@ -484,6 +488,7 @@ MIT License - Bebas digunakan untuk keperluan pribadi maupun komersial.
 ---
 
 **Selamat menggunakan! Jika ada pertanyaan, jangan ragu untuk bertanya.** 🚀
+
 
 
 
