@@ -183,12 +183,12 @@ sudo bash quick-start-v2.sh
 ```bash
 # Download dan setup otomatis
 cd /root && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-installer.sh && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-optimizer.sh && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/wings-installer.sh && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/fix-common-issues.sh && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start.sh && \
-wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start-v2.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/wings-installer.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/fix-common-issues.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh && \
+wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start-v2.sh && \
 chmod +x *.sh && \
 echo "✓ Download selesai! Jalankan: sudo bash quick-start-v2.sh"
 ```
@@ -673,4 +673,5 @@ Jika script ini membantu Anda, berikan ⭐ di GitHub!
 **🦅 Wings ready! Siap menjalankan game servers!**
 
 **📖 Butuh bantuan? Baca dokumentasi atau join Discord Pterodactyl!**
+
 
