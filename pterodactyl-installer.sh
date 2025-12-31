@@ -113,7 +113,7 @@ send_summary() {
     echo "    First name: $FIRSTNAME"
     echo "    Last name: $LASTNAME"
     if [ -n "$USERPASSWORD" ]; then
-    echo "    Password: $(printf "%0.s*" $(seq 1 ${#USERPASSWORD}))"
+    echo "    Password: $USERPASSWORD"
     else
         echo "    Password: Not set.."
     fi
@@ -140,7 +140,7 @@ finish(){
     echo "    Username: $USERNAME"
     echo "    First name: $FIRSTNAME"
     echo "    Last name: $LASTNAME"
-    echo "    Password: $(printf "%0.s*" $(seq 1 ${#USERPASSWORD}))"
+    echo "    Password: $USERPASSWORD"
     echo "" 
     echo "    Database password: $DBPASSWORD"
     echo "    Password for Database Host: $DBPASSWORDHOST"
@@ -642,7 +642,7 @@ panel_summary(){
     echo "    Username: $USERNAME"
     echo "    First name: $FIRSTNAME"
     echo "    Last name: $LASTNAME"
-    echo "    Password: $(printf "%0.s*" $(seq 1 ${#USERPASSWORD}))"
+    echo "    Password: $USERPASSWORD"
     echo ""
     echo "    These credentials will be saved in a file called" 
     echo "    panel_credentials.txt in root directory. (excluding your personal password)"
