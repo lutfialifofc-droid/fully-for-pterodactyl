@@ -675,3 +675,4 @@ Jika script ini membantu Anda, berikan ⭐ di GitHub!
 **📖 Butuh bantuan? Baca dokumentasi atau join Discord Pterodactyl!**
 
 
+
