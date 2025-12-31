@@ -15,24 +15,24 @@ CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
 clear
-
+2
 echo -e "${CYAN}"
 cat << "EOF"
-|===========================================================|
--                                                          -
- -           .     █▀▀  █░█  █░░  █░░  █▄█          .          -
--               .  █▀░  █▄█  █▄▄  █▄▄  ░█░             .      -
-  -                                               .            -
--                 .    █▀▀  █▀█  █▀█                  .      -
-  -              .     █▀░  █▄█  █▀▄              .           -
--                                                  .       -
-  -    █▀█  ▀█▀  █▀▀  █▀█  █▀█  █▀▄  ▄▀█  █▀▀  ▀█▀  █▄█       -
--      █▀▀  ░█░  ██▄  █▀▄  █▄█  █▄▀  █▀█  █▄▄  ░█░  ░█░      -  
-  -                                                           -        
--         CREATED BY LUTFIALIFOFC-DROID                   -    
-  -     THIS SCRIPT SUPPORT FOR UBUNTU 24.04 ONLY             -
--               SCRIPT VERSION 1.0                        -
-|============================================================|
+                          |===========================================================|
+                     -                                                          -
+                         -           .     █▀▀  █░█  █░░  █░░  █▄█          .          -
+                        -               .  █▀░  █▄█  █▄▄  █▄▄  ░█░             .      -
+                 -                                               .            -
+                         -                 .    █▀▀  █▀█  █▀█                  .      -
+                           -              .     █▀░  █▄█  █▀▄              .           -
+                                -                                                  .       -
+                          -    █▀█  ▀█▀  █▀▀  █▀█  █▀█  █▀▄  ▄▀█  █▀▀  ▀█▀  █▄█       -
+                        -      █▀▀  ░█░  ██▄  █▀▄  █▄█  █▄▀  █▀█  █▄▄  ░█░  ░█░      -  
+                        -                                                           -        
+                             -         CREATED BY LUTFIALIFOFC-DROID                   -    
+                          -     THIS SCRIPT SUPPORT FOR UBUNTU 24.04 ONLY             -
+                           -               SCRIPT VERSION 1.0                        -
+                          |============================================================|
 EOF
 echo -e "${NC}"
 
@@ -45,30 +45,30 @@ fi
 # Main menu
 show_menu() {
     echo -e "${YELLOW}═══════════════════════════════════════════════════════════${NC}"
-    echo -e "${GREEN}Pilih opsi yang Anda inginkan:${NC}"
+    echo -e "${GREEN}                       OPTION:${NC}"
     echo -e "${YELLOW}═══════════════════════════════════════════════════════════${NC}"
     echo ""
-    echo -e "${PURPLE}=== PANEL ===${NC}"
+    echo -e "${PURPLE}=== PANEL ===${NC}"                                                       
     echo -e "${CYAN}[1]${NC} 🚀 Install Pterodactyl Panel"
     echo -e "${CYAN}[2]${NC} ⚡ Optimize Panel"
     echo -e "${CYAN}[3]${NC} 🔄 Update Panel"
     echo ""
-    echo -e "${PURPLE}=== WINGS (NODE) ===${NC}"
-    echo -e "${CYAN}[4]${NC} 🦅 Install Wings (Daemon/Node)"
-    echo -e "${CYAN}[5]${NC} 🔧 Manage Wings (Start/Stop/Restart)"
-    echo -e "${CYAN}[6]${NC} 📝 Configure Wings"
+                                                             echo -e "${PURPLE}=== WINGS (NODE) ===${NC}"
+                                                             echo -e "${CYAN}[4]${NC} 🦅 Install Wings (Daemon/Node)"
+                                                             echo -e "${CYAN}[5]${NC} 🔧 Manage Wings (Start/Stop/Restart)"
+                                                             echo -e "${CYAN}[6]${NC} 📝 Configure Wings"
     echo ""
     echo -e "${PURPLE}=== MONITORING & MAINTENANCE ===${NC}"
     echo -e "${CYAN}[7]${NC} 📊 Check System Status"
     echo -e "${CYAN}[8]${NC} 💾 Backup Panel & Database"
     echo -e "${CYAN}[9]${NC} 🔧 Troubleshooting & Repair"
     echo ""
-    echo -e "${PURPLE}=== OTHER ===${NC}"
-    echo -e "${CYAN}[10]${NC} 📖 View Documentation"
-    echo -e "${CYAN}[11]${NC} ❌ Exit"
+                                                             echo -e "${PURPLE}=== OTHER ===${NC}"
+                                                             echo -e "${CYAN}[10]${NC} 📖 View Documentation"
+                                                             echo -e "${CYAN}[11]${NC} ❌ Exit"
     echo ""
     echo -e "${YELLOW}═══════════════════════════════════════════════════════════${NC}"
-    echo -n -e "${GREEN}Masukkan pilihan [1-11]: ${NC}"
+    echo -n -e "${GREEN}           Masukkan pilihan [1-11]: ${NC}"
 }
 
 # Function: Install Panel

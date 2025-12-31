@@ -1,4 +1,4 @@
-# Pterodactyl Panel & Wings Auto Installer 
+# Pterodactyl Panel & Wings Auto Installer
 ## Ubuntu 24.04 LTS + Nginx + Docker
 
 Script lengkap untuk instalasi dan optimasi Pterodactyl Panel & Wings dengan performa maksimal.
@@ -156,18 +156,18 @@ ssh root@your-server-ip
 cd /root
 
 # Download semua script dari GitHub
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/wings-installer.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/fix-common-issues.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start-v2.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-installer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-optimizer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/wings-installer.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/fix-common-issues.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start.sh
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start-v2.sh
 
 # Download dokumentasi (optional)
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/README.md
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/CARA-INSTALASI.md
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/WINGS-INSTALLATION.md
-wget https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/TROUBLESHOOTING.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/README.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/CARA-INSTALASI.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/WINGS-INSTALLATION.md
+wget https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/TROUBLESHOOTING.md
 
 # Berikan permission
 chmod +x *.sh
@@ -183,12 +183,12 @@ sudo bash quick-start-v2.sh
 ```bash
 # Download dan setup otomatis
 cd /root && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-installer.sh && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/pterodactyl-optimizer.sh && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/wings-installer.sh && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/fix-common-issues.sh && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start.sh && \
-wget -q https://raw.githubusercontent.com/lutfialifofc-droid/fully-for-pterodactyl/main/quick-start-v2.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-installer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/pterodactyl-optimizer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/wings-installer.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/fix-common-issues.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start.sh && \
+wget -q https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/quick-start-v2.sh && \
 chmod +x *.sh && \
 echo "✓ Download selesai! Jalankan: sudo bash quick-start-v2.sh"
 ```
@@ -673,6 +673,3 @@ Jika script ini membantu Anda, berikan ⭐ di GitHub!
 **🦅 Wings ready! Siap menjalankan game servers!**
 
 **📖 Butuh bantuan? Baca dokumentasi atau join Discord Pterodactyl!**
-
-
-
