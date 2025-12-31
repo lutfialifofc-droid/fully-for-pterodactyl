@@ -218,7 +218,7 @@ ssh root@your-server-ip
 
 # Clone repository
 cd /root
-git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git clone https://github.com/lutfialifofc-droid/fully-for-pterodactyl.git
 cd YOUR_REPO
 
 # Berikan permission
@@ -673,4 +673,5 @@ Jika script ini membantu Anda, berikan ⭐ di GitHub!
 **🦅 Wings ready! Siap menjalankan game servers!**
 
 **📖 Butuh bantuan? Baca dokumentasi atau join Discord Pterodactyl!**
+
 
